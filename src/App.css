@@ -28,8 +28,43 @@ body {
 
 li {
   list-style: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 18px;
+  background-color: #5a519b;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 nav {
-  display: inline-flex
+  width: 350px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+li:hover, li:active {
+  color: #64bdf0;
+}
+
+li:active {
+  text-shadow: 1px 1px gray;
+}
+
+.forecastDays, .forecastTemp {
+  display: inline-grid;
+  grid-template-columns: 88px 88px 88px 88px;
+}
+
+.forecastTemp p {
+  margin-top: 0
+}
+
+.forecastDays p {
+  margin-bottom: 0.5rem
+}
+
+.savedLocations {
+  margin-bottom: 0
 }

@@ -13,8 +13,9 @@ class App extends Component {
     this.state = {
       city: "",
       captured: false,
-      citiesArray: [],
+      citiesArray: ["Monterrey", "London", "Torreón"],
       input: "",
+      currentDate: (new Date()).getDay(),
     }
   }
 
@@ -50,9 +51,8 @@ class App extends Component {
         </section>
 
         {this.state.captured ? 
-          <City1 city={this.state.city} handleData={this.handleData} handleSubmit={this.handleSubmit} citiesArray={this.state.citiesArray}/>
+          <City1 city={this.state.city} handleData={this.handleData} handleSubmit={this.handleSubmit} citiesArray={this.state.citiesArray} today={this.state.currentDate}/>
         : <space></space>}
-
       </div>
     );
   }
