@@ -2,6 +2,11 @@ import './App.css';
 import React, { Component } from "react";
 import City1 from "./components/city1"
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon} from "@fortawesome/free-solid-svg-icons"
+library.add(faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon)
+
 class App extends Component {
   constructor(props) {
     super(props)

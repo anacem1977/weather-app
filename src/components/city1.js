@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 class City1 extends Component {
   constructor(props) {
     super(props)
@@ -15,8 +17,22 @@ class City1 extends Component {
       const results = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&appid=aaefdf95e0264b77aed05a514db664d0`);
     this.setState ({
         results: results.data,
-        loaded: true
+        loaded: true,
+        icon: ""
     })
+    if (this.state.results.weather[0].main === "Rain" || this.state.results.weather[0].main === "Mist") {
+        this.setState ({
+            icon: "cloud-rain"
+        }); 
+    } else if (this.state.results.weather[0].main === "Clouds") {
+      this.setState ({
+          icon: "cloud"
+      }); 
+    } else if (this.state.results.weather[0].main === "Clear") {
+        this.setState ({
+            icon: "sun"
+        }); 
+      } 
   } 
 
   setCity = (event) => {
@@ -44,15 +60,14 @@ class City1 extends Component {
           {this.state.loaded ? 
           <div>
             <header>
-                <h1>{this.state.results.name}</h1>
-                <h2>icon: {this.state.results.weather[0].main}</h2>
+                <h1 className="city">{this.state.results.name}</h1>
+                <h2>{this.state.results.weather[0].main}</h2>
+                <FontAwesomeIcon icon={this.state.icon} size="6x" className="showIcons"></FontAwesomeIcon>
             </header>
             <section>
-                <h2>Current Temperature: {this.state.results.main.temp}° C</h2>
-                <h2>Feels like: {this.state.results.main.feels_like}° C</h2>
-                <h3>Min {this.state.results.main.temp_min}° C / Max {this.state.results.main.temp_max}° C</h3>
-                <h3>Latitude: {this.state.results.coord.lat}</h3>
-                <h3>Longitude: {this.state.results.coord.lon}</h3>
+                <h2 className="currentTemp">{this.state.results.main.temp.toFixed(0)}° C</h2>
+                <h2 className="otherTemps">Feels like: {this.state.results.main.feels_like.toFixed(0)}° C</h2>
+                <h2 className="otherTemps">Min {this.state.results.main.temp_min.toFixed(0)}° C / Max {this.state.results.main.temp_max.toFixed(0)}° C</h2>
             </section>
             <nav>
                 {allCities}
