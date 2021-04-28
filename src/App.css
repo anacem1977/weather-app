@@ -13,13 +13,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+  margin-top: 0
+}
+
 .currentTemp {
-  font-size: 40px;
+  font-size: 32px;
   margin-bottom: 0;
 }
 
 .city {
   font-weight: normal;
+  margin-top: 2rem;
 }
 
 .otherTemps {
@@ -58,13 +63,51 @@ li:active {
 }
 
 .forecastTemp p {
-  margin-top: 0
+  margin-top: 0;
+  font-size: 18px;
 }
 
 .forecastDays p {
   margin-bottom: 0.5rem
 }
 
-.savedLocations {
+.subtitle {
   margin-bottom: 0
+}
+
+.submitButton {
+  background-color: #7961a3;
+  color: white;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  font-size: 16px;
+}
+
+.currentCity {
+  font-size: 18px;
+}
+
+.forecast, .currentCond {
+  background-color: #b4cfea;
+  color: #647c9d;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.currentCond {
+  display: inline-grid;
+  grid-template-columns: 187px 187px;
+  border-radius: 25px;
+}
+
+.currentCond p {
+  text-align: right;
+  margin: 0.5rem 1.5rem 0.5rem 0;
+  align-self: end;
+}
+
+p.currentIcon {
+  margin-left: 1.5rem;
+  align-self: center;
+  text-align: left;
 }

@@ -4,8 +4,8 @@ import City1 from "./components/city1"
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon} from "@fortawesome/free-solid-svg-icons"
-library.add(faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon)
+import {faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon, faCompressAlt, faTint} from "@fortawesome/free-solid-svg-icons"
+library.add(faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon, faCompressAlt, faTint)
 
 class App extends Component {
   constructor(props) {
@@ -42,12 +42,12 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>WEATHER APP </h1>
+          <h1>WEATHER APP ☀️</h1>
         </header>
         <section>
-          <label for="city">Enter City: </label>
-          <input type="text" id="city" name="city" onChange={this.handleData} value={this.state.input}></input>
-          <input type="submit" value="Submit" onClick={this.handleSubmit}></input>
+          <label for="city" className="currentCity">Enter City: </label>
+          <input type="text" id="city" name="city" onChange={this.handleData} value={this.state.input} ></input>
+          <input type="submit" value="Submit" onClick={this.handleSubmit} className="submitButton"></input>
         </section>
 
         {this.state.captured ? 
