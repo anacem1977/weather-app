@@ -13,7 +13,11 @@ class City1 extends Component {
         loadedWeather: false,
         loadedForecast: false,
         icon: "",
-        weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        day1: "",
+        day2: "",
+        day3: "",
+        day4: "",
     }
   }
 
@@ -43,18 +47,56 @@ class City1 extends Component {
 
   getForecast = async() => {
     const forecast = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=metric&appid=aaefdf95e0264b77aed05a514db664d0`);
-  this.setState ({
+    this.setState ({
       forecast: forecast.data,
       loadedForecast: true
-  })
-} 
+    })
+  } 
+
+  setDate = () => {
+    if (this.props.today <= 2) {
+        this.setState ({
+            day1: this.state.weekdays[this.props.today+1],
+            day2: this.state.weekdays[this.props.today+2],
+            day3: this.state.weekdays[this.props.today+3],
+            day4: this.state.weekdays[this.props.today+4],
+        })
+    } else if (this.props.today === 3) {
+        this.setState ({
+            day1: this.state.weekdays[this.props.today+1],
+            day2: this.state.weekdays[this.props.today+2],
+            day3: this.state.weekdays[this.props.today+3],
+            day4: this.state.weekdays[this.props.today-3],
+        })
+    } else if (this.props.today === 4) {
+        this.setState ({
+            day1: this.state.weekdays[this.props.today+1],
+            day2: this.state.weekdays[this.props.today+2],
+            day3: this.state.weekdays[this.props.today-4],
+            day4: this.state.weekdays[this.props.today-3],
+        })
+    } else if (this.props.today === 5) {
+        this.setState ({
+            day1: this.state.weekdays[this.props.today+1],
+            day2: this.state.weekdays[this.props.today-5],
+            day3: this.state.weekdays[this.props.today-4],
+            day4: this.state.weekdays[this.props.today-3],
+        })
+    } else if (this.props.today === 6) {
+        this.setState ({
+            day1: this.state.weekdays[this.props.today-6],
+            day2: this.state.weekdays[this.props.today-5],
+            day3: this.state.weekdays[this.props.today-4],
+            day4: this.state.weekdays[this.props.today-3],
+        })
+    }
+  }
 
   setCity = (event) => {
     event.preventDefault();
     this.setState ({
         city: event.target.innerHTML,
     })
-    console.log("city changed")
     this.getWeather();
     this.getForecast();
   }
@@ -62,6 +104,7 @@ class City1 extends Component {
   componentDidMount = () => {
       this.getWeather();
       this.getForecast();
+      this.setDate();
   }
 
   render() {
@@ -102,10 +145,10 @@ class City1 extends Component {
                 <h3 className="subtitle">Forecast:</h3>
                 <div className="forecast">
                     <section className="forecastDays">
-                        <p>{this.state.weekdays[this.props.today+1]}</p>
-                        <p>{this.state.weekdays[this.props.today+2]}</p>
-                        <p>{this.state.weekdays[this.props.today+3]}</p>
-                        <p>{this.state.weekdays[this.props.today-3]}</p>
+                        <p>{this.state.day1}</p>
+                        <p>{this.state.day2}</p>
+                        <p>{this.state.day3}</p>
+                        <p>{this.state.day4}</p>
                     </section>
                     <section className="forecastTemp">
                         <p>{this.state.forecast.list[8].main.temp.toFixed(0)} °C</p>

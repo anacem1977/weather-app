@@ -1,4 +1,4 @@
-# Weather App Challenge
+# Weather App Challenge ☀️
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/anacem1977/weather-app?style=for-the-badge)
 
