@@ -46,7 +46,7 @@ The weather app uses API calls to [Open Weather](https://api.openweathermap.org)
 ---
 
 ## Installation
-+ No special installation required: [Go to App](http://beer-encyclopaedia.surge.sh)
++ No special installation required: [Go to App](http://acc-weather-app.surge.sh)
 
 ---
 
