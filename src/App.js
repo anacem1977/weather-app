@@ -7,7 +7,8 @@ class App extends Component {
     super(props)
     this.state = {
       city: "",
-      captured: false
+      captured: false,
+      citiesArray: []
     }
   }
 
@@ -20,29 +21,29 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const data = {
-      city: this.state.city
-    }
+    const array = this.state.citiesArray.concat(this.state.city)
     this.setState({
-      captured: true
+      captured: !this.state.captured,
+      citiesArray: array
     })
   }
-
+  
   render() {
-
     return (
       <div className="App">
         <header>
           <h1>WEATHER APP </h1>
         </header>
+        <section>
+          <label for="city">Enter City: </label>
+          <input type="text" id="city" name="city" onChange={this.handleData}></input>
+          <input type="submit" value="Submit" onClick={this.handleSubmit}></input>
+        </section>
 
-        {this.state.captured ? <City1 city={this.state.city}/>
-        : <section>
-            <label for="city">Enter City: </label>
-            <input type="text" id="city" name="city" onChange={this.handleData}></input>
-            <br></br>
-            <input type="submit" value="Submit" onClick={this.handleSubmit}></input>
-          </section>}
+        {this.state.captured ? 
+          <City1 city={this.state.city} handleData={this.handleData} handleSubmit={this.handleSubmit} citiesArray={this.state.citiesArray}/>
+        : <space></space>}
+
       </div>
     );
   }

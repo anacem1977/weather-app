@@ -4,6 +4,7 @@ import axios from "axios"
 class City1 extends Component {
   constructor(props) {
     super(props)
+    console.log(props)
     this.state = {
         city: props.city,
         results: "",
@@ -21,20 +22,31 @@ class City1 extends Component {
     } 
 
   render() {
-    console.log(this.state.results)
+    const allCities = this.props.citiesArray.map((cities) => {
+        return (
+            <li>{cities}</li>
+        )
+    })
+    // console.log(this.state.results)
     return (
       <div className="city1">
           {this.state.loaded ? 
+          <div>
             <header>
-                <h1>City</h1>
                 <h1>{this.state.results.name}</h1>
                 <h2>icon: {this.state.results.weather[0].main}</h2>
+            </header>
+            <section>
                 <h2>Current Temperature: {this.state.results.main.temp}° C</h2>
                 <h2>Feels like: {this.state.results.main.feels_like}° C</h2>
                 <h3>Min {this.state.results.main.temp_min}° C / Max {this.state.results.main.temp_max}° C</h3>
                 <h3>Latitude: {this.state.results.coord.lat}</h3>
                 <h3>Longitude: {this.state.results.coord.lon}</h3>
-        </header>
+            </section>
+            <nav>
+                {allCities}
+            </nav>
+        </div>
         : <space></space>}
         
       </div>
