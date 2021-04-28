@@ -4,7 +4,6 @@ import axios from "axios"
 class City1 extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
         city: props.city,
         results: "",
@@ -12,22 +11,34 @@ class City1 extends Component {
     }
   }
 
-  componentDidMount = async() => {
+  getWeather = async() => {
       const results = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&appid=aaefdf95e0264b77aed05a514db664d0`);
     this.setState ({
         results: results.data,
         loaded: true
     })
-    
-    } 
+  } 
+
+  setCity = (event) => {
+    event.preventDefault();
+    this.setState ({
+        city: event.target.innerHTML,
+    })
+    console.log("city changed")
+    this.getWeather();
+  }
+
+  componentDidMount = () => {
+      this.getWeather();
+  }
 
   render() {
+      console.log(this.state.city)
     const allCities = this.props.citiesArray.map((cities) => {
         return (
-            <li>{cities}</li>
+            <li onClick={this.setCity}>{cities}</li>
         )
     })
-    // console.log(this.state.results)
     return (
       <div className="city1">
           {this.state.loaded ? 

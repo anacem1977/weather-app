@@ -8,7 +8,8 @@ class App extends Component {
     this.state = {
       city: "",
       captured: false,
-      citiesArray: []
+      citiesArray: [],
+      input: "",
     }
   }
 
@@ -16,6 +17,8 @@ class App extends Component {
     event.preventDefault();
     this.setState({
         [event.target.name]: event.target.value,
+        input: event.target.value,
+        captured: false,
     })
   }
 
@@ -23,8 +26,9 @@ class App extends Component {
     event.preventDefault();
     const array = this.state.citiesArray.concat(this.state.city)
     this.setState({
-      captured: !this.state.captured,
-      citiesArray: array
+      citiesArray: array,
+      captured: true,
+      input: ""
     })
   }
   
@@ -36,7 +40,7 @@ class App extends Component {
         </header>
         <section>
           <label for="city">Enter City: </label>
-          <input type="text" id="city" name="city" onChange={this.handleData}></input>
+          <input type="text" id="city" name="city" onChange={this.handleData} value={this.state.input}></input>
           <input type="submit" value="Submit" onClick={this.handleSubmit}></input>
         </section>
 
