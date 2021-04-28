@@ -67,10 +67,9 @@ class City1 extends Component {
   render() {
     const allCities = this.props.citiesArray.map((cities) => {
         return (
-            <li onClick={this.setCity}>{cities}</li>
+            <li onMouseDown={this.setCity} onMouseUp={this.getWeather} onClick={this.getForecast}>{cities}</li>
         )
     })
-    console.log(this.state.results)
     return (
       <div className="city1">
         {this.state.loadedWeather ? 

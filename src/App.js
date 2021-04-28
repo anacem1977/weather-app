@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       city: "",
       captured: false,
-      citiesArray: ["Monterrey", "London", "Torreón"],
+      citiesArray: ["Monterrey", "London", "Torreon"],
       input: "",
       currentDate: (new Date()).getDay(),
     }
@@ -30,12 +30,19 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const array = this.state.citiesArray.concat(this.state.city)
-    this.setState({
-      citiesArray: array,
-      captured: true,
-      input: ""
-    })
+    if (this.state.citiesArray.indexOf(this.state.city) === -1) {
+        const array = this.state.citiesArray.concat(this.state.city)
+        this.setState({
+          citiesArray: array,
+          captured: true,
+          input: ""
+        })
+    } else {
+        this.setState ({
+          captured: true,
+          input: ""
+        })
+    }
   }
   
   render() {
