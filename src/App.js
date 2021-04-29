@@ -3,9 +3,8 @@ import React, { Component } from "react";
 import City1 from "./components/city1"
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon, faCompressAlt, faTint} from "@fortawesome/free-solid-svg-icons"
-library.add(faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon, faCompressAlt, faTint)
+import {faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon, faCompressAlt, faTint, faSmog} from "@fortawesome/free-solid-svg-icons"
+library.add(faWind, faCloud, faSun, faCloudSun, faCloudRain, faMoon, faCompressAlt, faTint, faSmog)
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +23,7 @@ class App extends Component {
     this.setState({
         [event.target.name]: event.target.value,
         input: event.target.value,
+        //buscar solución
         captured: false,
     })
   }

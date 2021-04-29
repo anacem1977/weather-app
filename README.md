@@ -36,6 +36,7 @@ The weather app uses API calls to [Open Weather](https://api.openweathermap.org)
 | React Router  | <https://reactrouter.com/> |
 | Font Awesome         | <https://fontawesome.com/>                        |
 | Styled Components         | <https://styled-components.com/>                        |
+| React Animations         | <https://www.npmjs.com/package/react-animations/>                        |
 
 ---
 

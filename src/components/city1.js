@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios"
 
+import styled, { keyframes } from "styled-components";
+import { pulse } from 'react-animations';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 class City1 extends Component {
@@ -39,11 +42,16 @@ class City1 extends Component {
         this.setState ({
             icon: "sun"
         }); 
-      } else if (this.state.results.weather[0].main === "Wind" || this.state.results.weather[0].main === "Dust") {
+    } else if (this.state.results.weather[0].main === "Wind" || this.state.results.weather[0].main === "Dust") {
         this.setState ({
             icon: "wind"
         }); 
-  } }
+    } else if (this.state.results.weather[0].main === "Fog") {
+        this.setState ({
+            icon: "smog"
+        }); 
+    } 
+  }
 
   getForecast = async() => {
     const forecast = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=metric&appid=aaefdf95e0264b77aed05a514db664d0`);
@@ -113,6 +121,16 @@ class City1 extends Component {
             <li onMouseDown={this.setCity} onMouseUp={this.getWeather} onClick={this.getForecast}>{cities}</li>
         )
     })
+
+    const pulseAnimation = keyframes`${pulse}`;
+
+    const MyStyle = styled.p`
+        animation: 1s infinite ${pulseAnimation};
+        margin-top: 0.5rem;
+        &:hover {
+            text-shadow: 1px 1px #7961a3;
+        }
+    `
     return (
       <div className="city1">
         {this.state.loadedWeather ? 
@@ -120,7 +138,7 @@ class City1 extends Component {
                 <header>
                     <h1 className="city">{this.state.results.name}</h1>
                     <FontAwesomeIcon icon={this.state.icon} size="6x"></FontAwesomeIcon>
-                    <p>{this.state.results.weather[0].main}</p>
+                    <MyStyle>{this.state.results.weather[0].main}</MyStyle>
                 </header>
                 <section>
                     <h2 className="currentTemp">{this.state.results.main.temp.toFixed(0)}° C</h2>
