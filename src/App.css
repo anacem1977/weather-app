@@ -3,7 +3,6 @@
 .App {
   text-align: center;
   background-image: linear-gradient(#5a519b, #64bdf0);
-  max-width: 375px;
   margin: 2rem auto;
   color: white;
   padding: 2rem;
@@ -21,7 +20,6 @@ h1 {
 }
 
 .currentTemp {
-  font-size: 32px;
   margin-bottom: 0;
 }
 
@@ -38,14 +36,12 @@ li {
   list-style: none;
   padding: 0.5rem;
   border-radius: 5px;
-  font-size: 18px;
   background-color: #5a519b;
   cursor: pointer;
   margin-bottom: 1rem;
 }
 
 nav {
-  width: 350px;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -62,7 +58,6 @@ li:active {
 
 .forecastDays, .forecastTemp {
   display: inline-grid;
-  grid-template-columns: 88px 88px 88px 88px;
 }
 
 .forecastTemp p {
@@ -83,11 +78,6 @@ li:active {
   color: white;
   border-radius: 5px;
   margin-left: 0.5rem;
-  font-size: 16px;
-}
-
-.currentCity {
-  font-size: 18px;
 }
 
 .forecast, .currentCond {
@@ -99,7 +89,6 @@ li:active {
 
 .currentCond {
   display: inline-grid;
-  grid-template-columns: 187px 187px;
   border-radius: 25px;
 }
 
@@ -112,4 +101,105 @@ li:active {
 p.currentIcon {
   margin-left: 1.5rem;
   text-align: left;
+}
+
+@media only screen and (min-width: 320px) {
+  .App {
+    max-width: 250px;
+  }
+  #city {
+    width: 110px;
+  }
+  .forecastDays, .forecastTemp {
+    grid-template-columns: 60px 60px 60px 60px;
+    font-size: 12px
+  }
+  .currentCity {
+    font-size: 14px
+  }
+  .submitButton {
+    font-size: 12px
+  }
+  h2 {
+    font-size: 20px
+  }
+  h1, h2.currentTemp {
+    font-size: 26px
+  }
+  h3 {
+    font-size: 16px
+  }
+  .fa-6x {
+    font-size: 4em;
+  }
+  .currentIcon, .currentCond p  {
+    font-size: 12px;
+  }
+  .currentCond {
+    grid-template-columns: 125px 125px;
+  }
+  .currentCond p {
+    margin: 0.5rem 1rem 0.5rem 0;
+  }
+  p.currentIcon {
+    margin-left: 1rem;
+  }
+  .forecastTemp p {
+    font-size: 15px;
+  }
+  nav {
+    width: 300px;
+    margin-left: -1.6rem
+  }
+  li {
+    font-size: 14px;
+    margin: 0.25rem;
+  }
+}
+
+@media only screen and (min-width: 568px) {
+  .App {
+    max-width: 375px;
+  }
+  #city {
+    width: 130px;
+  }
+  .forecastDays, .forecastTemp {
+    grid-template-columns: 88px 88px 88px 88px;
+    font-size: 14px
+  }
+  .currentCity {
+    font-size: 18px
+  }
+  .submitButton {
+    font-size: 16px
+  }
+  h2 {
+    font-size: 20px
+  }
+  h1, h2.currentTemp {
+    font-size: 32px
+  }
+  h3 {
+    font-size: 18px
+  }
+  .fa-6x {
+    font-size: 6em;
+  }
+  .currentIcon, .currentCond p  {
+    font-size: 15px;
+  }
+  .currentCond {
+    grid-template-columns: 187px 187px;
+  }
+  .forecastTemp p {
+    font-size: 15px;
+  }
+  nav {
+    width: 375px;
+    margin-left: 0rem
+  }
+  li {
+    font-size: 18px;
+  }
 }

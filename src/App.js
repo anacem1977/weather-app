@@ -23,7 +23,7 @@ class App extends Component {
     this.setState({
         [event.target.name]: event.target.value,
         input: event.target.value,
-        //buscar solución
+        //temporary solution
         captured: false,
     })
   }
