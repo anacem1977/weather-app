@@ -9,12 +9,11 @@ To develop a weather app using open weather API to demonstrate abilities in Reac
 
 ## Table of Contents
 1. [General Info](#general-info)
-3. [Functionality](#functionality)
-5. [Dependencies](#dependencies)
-6. [Structure](#structure)
-7. [Installation](#installation)
-8. [Sources](#sources)
-9. [Author](#author)
+2. [Functionality](#functionality)
+3. [Dependencies](#dependencies)
+4. [Structure](#structure)
+5. [Installation](#installation)
+6. [Author](#author)
 
 ---
 
